@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Smart Campus Placement Preparation Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SmartCampus</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-category-title">Main Portal</div>
+        <div class="menu-item">
+          <a href="dashboard.html" class="menu-link active">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html" class="menu-link">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Practice Arena</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="mock-test.html" class="menu-link">
+            <i class="fa-solid fa-stopwatch-20"></i>
+            <span>Mock Test Engine</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="result.html" class="menu-link">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+            <span>Results & Analytics</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">Preparation Resources</div>
+        <div class="menu-item">
+          <a href="interview.html" class="menu-link">
+            <i class="fa-solid fa-comments"></i>
+            <span>Interview Prep Hub</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html?cat=programming" class="menu-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Technical Coding</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">System</div>
+        <div class="menu-item">
+          <a href="admin.html" class="menu-link">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Admin Portal</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="index.html" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Public Home</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- User Info Footer in Sidebar -->
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar session-user-avatar">ST</div>
+          <div class="user-info">
+            <div class="user-name session-user-name">Student Account</div>
+            <div class="user-role session-user-role">BCA Placement Candidate</div>
+          </div>
+          <button class="btn-logout btn-logout-trigger" title="Log Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content App Canvas -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-page-title">
+            <h2>Student Placement Dashboard</h2>
+            <p>Monitor your readiness metrics, mock performance, and subject progress.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="mock-test.html" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-play"></i> Start Mock Test
+          </a>
+          <button class="btn btn-light btn-sm btn-logout-trigger" title="Logout">
+            <i class="fa-solid fa-power-off text-danger"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Content Viewport -->
+      <div class="app-content">
+
+        <!-- Welcome Banner -->
+        <div class="card p-4 mb-4" style="background: linear-gradient(135deg, #1e1b4b, #312e81); color:#ffffff; border:none; box-shadow:var(--shadow-md);">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <span class="badge badge-purple mb-2" style="background:rgba(255,255,255,0.15);color:#ffffff;">Placement Radar</span>
+              <h2 class="text-white fw-bold mb-1" id="dashboard-greeting">Welcome back, Student! 🚀</h2>
+              <p class="mb-0" style="color:#cbd5e1; font-size:0.95rem;">
+                Stay consistent! Complete at least one timed mock exam weekly to strengthen quantitative speed and technical recall.
+              </p>
+            </div>
+            <div class="text-end">
+              <span class="d-block text-white-50" style="font-size:0.8rem;margin-bottom:0.3rem;">Current Status</span>
+              <span class="badge badge-success" id="metric-readiness-badge" style="font-size:0.85rem;padding:0.45rem 1rem;">Calculating...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Statistics Summary Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="metric-total-tests">0</h4>
+              <span>Tests Completed</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon emerald">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="metric-avg-score">0%</h4>
+              <span>Average Campus Score</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon amber">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="metric-highest-score">0%</h4>
+              <span>Personal Best Score</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon navy">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="metric-total-attempted">0</h4>
+              <span>Questions Solved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard 2-Column Section -->
+        <div class="row" style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+          
+          <!-- Subject-wise Progress -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;">
+                <i class="fa-solid fa-chart-simple text-primary"></i> Subject Proficiency Breakdown
+              </h4>
+              <a href="practice.html" class="btn btn-sm btn-light">Practice Now</a>
+            </div>
+            <div class="card-body" id="subject-progress-container">
+              <!-- Rendered dynamically by js/dashboard.js -->
+            </div>
+          </div>
+
+          <!-- Quick Test Launcher Cards -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;">
+                <i class="fa-solid fa-bolt text-warning"></i> Quick Test Launchers
+              </h4>
+              <span class="badge badge-purple">10 Min Tests</span>
+            </div>
+            <div class="card-body">
+              <div class="action-cards-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="action-card" style="padding:1rem;">
+                  <div class="action-icon track-icon-aptitude" style="margin-bottom:0.5rem;width:38px;height:38px;font-size:1rem;">
+                    <i class="fa-solid fa-calculator"></i>
+                  </div>
+                  <strong class="text-navy" style="font-size:0.9rem;">Aptitude Speed Test</strong>
+                  <small class="text-muted mb-2">Math & Percentages</small>
+                  <a href="mock-test.html?category=aptitude" class="btn btn-sm btn-outline-primary btn-block">Launch &rarr;</a>
+                </div>
+
+                <div class="action-card" style="padding:1rem;">
+                  <div class="action-icon track-icon-reasoning" style="margin-bottom:0.5rem;width:38px;height:38px;font-size:1rem;">
+                    <i class="fa-solid fa-brain"></i>
+                  </div>
+                  <strong class="text-navy" style="font-size:0.9rem;">Reasoning Mock</strong>
+                  <small class="text-muted mb-2">Series & Puzzles</small>
+                  <a href="mock-test.html?category=reasoning" class="btn btn-sm btn-outline-primary btn-block">Launch &rarr;</a>
+                </div>
+
+                <div class="action-card" style="padding:1rem;">
+                  <div class="action-icon track-icon-verbal" style="margin-bottom:0.5rem;width:38px;height:38px;font-size:1rem;">
+                    <i class="fa-solid fa-spell-check"></i>
+                  </div>
+                  <strong class="text-navy" style="font-size:0.9rem;">Verbal Ability</strong>
+                  <small class="text-muted mb-2">Grammar & Vocab</small>
+                  <a href="mock-test.html?category=verbal" class="btn btn-sm btn-outline-primary btn-block">Launch &rarr;</a>
+                </div>
+
+                <div class="action-card" style="padding:1rem;">
+                  <div class="action-icon track-icon-tech" style="margin-bottom:0.5rem;width:38px;height:38px;font-size:1rem;">
+                    <i class="fa-solid fa-code"></i>
+                  </div>
+                  <strong class="text-navy" style="font-size:0.9rem;">Technical & Coding</strong>
+                  <small class="text-muted mb-2">C, Java & Web Logic</small>
+                  <a href="mock-test.html?category=programming" class="btn btn-sm btn-outline-primary btn-block">Launch &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Test Results Table -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;">
+                <i class="fa-solid fa-table-list text-primary"></i> Recent Test Attempts & Performance History
+              </h4>
+              <small class="text-muted">Review your answers, correct solutions, and time spent.</small>
+            </div>
+            <a href="mock-test.html" class="btn btn-sm btn-primary">Take New Test</a>
+          </div>
+
+          <div class="card-body p-0">
+            <!-- Empty state -->
+            <div id="recent-tests-empty" class="text-center p-5" style="display:none;">
+              <i class="fa-regular fa-folder-open text-muted mb-3" style="font-size:2.5rem;"></i>
+              <h4 class="fw-bold text-navy">No Test Attempts Yet</h4>
+              <p class="text-muted mb-3">You haven't attempted any mock assessments yet. Take your first test now!</p>
+              <a href="mock-test.html" class="btn btn-primary btn-sm">Start Your First Test</a>
+            </div>
+
+            <!-- Table -->
+            <div id="recent-tests-table-wrapper" class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Test Title / Subject</th>
+                    <th>Attempt Date</th>
+                    <th>Questions Correct</th>
+                    <th>Score</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-tests-tbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interview Quick Prep Card -->
+        <div class="card p-4" style="background:#ffffff; border-left: 5px solid var(--primary-purple);">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <span class="badge badge-purple mb-1">HR & Technical Round</span>
+              <h4 class="fw-bold text-navy mb-1">Preparing for Technical & HR Interviews?</h4>
+              <p class="text-muted mb-0" style="font-size:0.925rem;">
+                Explore common Java/C questions, how to explain your BCA final-year project using the STAR framework, and top Group Discussion points.
+              </p>
+            </div>
+            <a href="interview.html" class="btn btn-outline-primary">
+              <i class="fa-solid fa-user-tie"></i> Open Interview Prep Hub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    // Responsive Sidebar Toggle
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    const sidebar = document.getElementById('app-sidebar');
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    }
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Temp/test files
+test_server.bat
+probe.ps1
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+*.suo
+*.user

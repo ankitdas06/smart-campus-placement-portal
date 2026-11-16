@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Access & Registration | Smart Campus Placement Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      background: radial-gradient(circle at 10% 20%, #e0e7ff 0%, #f8fafc 60%, #ffffff 100%);
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 520px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+    }
+
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .auth-tab-btn {
+      flex: 1;
+      padding: 1.15rem 1rem;
+      border: none;
+      background: none;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+    }
+
+    .auth-tab-btn.active {
+      color: var(--primary-purple);
+      background: #ffffff;
+      border-bottom-color: var(--primary-purple);
+    }
+
+    .auth-tab-btn:hover {
+      color: var(--primary-navy);
+    }
+
+    .demo-credentials-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .demo-btn-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar Link back to Home -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-title">Smart<span>Campus</span></div>
+      </a>
+
+      <a href="index.html" class="btn btn-light btn-sm">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <div class="auth-page-wrapper">
+    <div class="auth-card">
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" id="tab-login-btn">
+          <i class="fa-solid fa-right-to-bracket"></i> Student Login
+        </button>
+        <button type="button" class="auth-tab-btn" id="tab-register-btn">
+          <i class="fa-solid fa-user-plus"></i> New Student Registration
+        </button>
+      </div>
+
+      <div class="card-body" style="padding: 2.25rem;">
+        
+        <!-- ================= Login Form Container ================= -->
+        <div id="login-form-container">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold text-navy">Welcome Back</h2>
+            <p class="text-muted" style="font-size:0.9rem;">Sign in to access your placement dashboard, tests, and analytics.</p>
+          </div>
+
+          <form id="form-login" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="login-email">Email Address <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="login-email" class="form-control" placeholder="e.g. rahul.sharma@college.edu" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-password">Password <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="login-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Portal
+            </button>
+          </form>
+
+          <!-- Quick Fill Demo Helper -->
+          <div class="demo-credentials-box">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <i class="fa-solid fa-wand-magic-sparkles text-primary"></i>
+              <strong class="text-navy">Evaluation Quick-Fill (One-Click Demo):</strong>
+            </div>
+            <p class="text-muted mb-2" style="font-size:0.8rem;">Click a button below to automatically load predefined demo credentials for your viva examination:</p>
+            <div class="demo-btn-group">
+              <button type="button" class="btn btn-sm btn-outline-primary" id="btn-demo-student">
+                <i class="fa-solid fa-user-graduate"></i> Student Demo
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-navy" id="btn-demo-admin">
+                <i class="fa-solid fa-user-shield"></i> Admin Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Registration Form Container ================= -->
+        <div id="register-form-container" style="display: none;">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold text-navy">Student Registration</h2>
+            <p class="text-muted" style="font-size:0.9rem;">Create your profile to track placement tests and progress.</p>
+          </div>
+
+          <form id="form-register" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Full Name <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" id="reg-name" class="form-control" placeholder="e.g. Priya Patel" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Email Address <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" id="reg-email" class="form-control" placeholder="e.g. priya.patel@college.edu" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-college">College / University Name</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-building-columns"></i>
+                <input type="text" id="reg-college" class="form-control" placeholder="e.g. St. Xavier's BCA College">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-password">Create Password <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="reg-password" class="form-control" placeholder="At least 6 characters" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-confirm-password">Confirm Password <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock-open"></i>
+                <input type="password" id="reg-confirm-password" class="form-control" placeholder="Re-enter password" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">
+              <i class="fa-solid fa-user-check"></i> Register Student Account
+            </button>
+          </form>
+        </div>
+
+        <!-- Academic Demonstration Notice -->
+        <div class="mt-4 pt-3 border-top text-center" style="font-size:0.775rem; color:var(--text-muted);">
+          <i class="fa-solid fa-circle-info text-primary"></i> 
+          <strong>Academic Note:</strong> This is a demonstration authentication module storing registered profiles in browser <code>LocalStorage</code>. It simulates real client-side validation for university final-year evaluations.
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

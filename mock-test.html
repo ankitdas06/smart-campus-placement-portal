@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Test Simulator | Smart Campus Placement Preparation Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SmartCampus</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-category-title">Main Portal</div>
+        <div class="menu-item">
+          <a href="dashboard.html" class="menu-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html" class="menu-link">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Practice Arena</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="mock-test.html" class="menu-link active">
+            <i class="fa-solid fa-stopwatch-20"></i>
+            <span>Mock Test Engine</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="result.html" class="menu-link">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+            <span>Results & Analytics</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">Preparation Resources</div>
+        <div class="menu-item">
+          <a href="interview.html" class="menu-link">
+            <i class="fa-solid fa-comments"></i>
+            <span>Interview Prep Hub</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html?cat=programming" class="menu-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Technical Coding</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">System</div>
+        <div class="menu-item">
+          <a href="admin.html" class="menu-link">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Admin Portal</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="index.html" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Public Home</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar session-user-avatar">ST</div>
+          <div class="user-info">
+            <div class="user-name session-user-name">Student Account</div>
+            <div class="user-role session-user-role">BCA Placement Candidate</div>
+          </div>
+          <button class="btn-logout btn-logout-trigger" title="Log Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content App Canvas -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-page-title">
+            <h2 id="mock-exam-title">Campus Placement Mock Test</h2>
+            <p>Timed Recruitment Simulator with Dynamic Evaluation</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="quiz-timer-badge" id="exam-timer">
+            <i class="fa-regular fa-clock"></i> 10:00
+          </div>
+          <button type="button" class="btn btn-sm btn-danger" id="btn-open-submit-modal">
+            <i class="fa-solid fa-paper-plane"></i> Submit Test
+          </button>
+        </div>
+      </header>
+
+      <!-- Mock Test Interface Viewport -->
+      <div class="app-content">
+        
+        <div class="quiz-container">
+          
+          <!-- Left Column: Question Arena -->
+          <div class="quiz-main-card">
+            
+            <div class="quiz-header">
+              <div>
+                <span class="badge badge-purple mb-1" id="current-q-category">APTITUDE</span>
+                <span class="badge badge-navy" id="current-q-topic">Percentage</span>
+              </div>
+              <span class="fw-bold text-navy" id="current-q-number" style="font-size:1.05rem;">Question 1 of 10</span>
+            </div>
+
+            <!-- Question Statement -->
+            <div class="question-text" id="mock-question-text" style="font-size:1.15rem; min-height: 70px;">
+              Loading question statement...
+            </div>
+
+            <!-- Options Container -->
+            <div class="options-list" id="mock-options-container">
+              <!-- Dynamically rendered 4 options -->
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="quiz-navigation-footer">
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-light" id="btn-prev-q">
+                  <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button type="button" class="btn btn-light" id="btn-clear-response" title="Clear current selection">
+                  <i class="fa-solid fa-rotate-left"></i> Clear Choice
+                </button>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-navy" id="btn-flag-review" title="Flag this question to review later">
+                  <i class="fa-regular fa-bookmark"></i> Mark for Review
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-next-q">
+                  Next Question <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Question Palette & Instructions -->
+          <div class="quiz-palette-card">
+            <h4 class="fw-bold text-navy mb-3" style="font-size:1.1rem;">
+              <i class="fa-solid fa-grid-2 text-primary"></i> Question Palette
+            </h4>
+
+            <!-- Legend Status Indicators -->
+            <div class="palette-status-legend">
+              <div class="legend-item">
+                <div class="legend-indicator" style="background:var(--success);"></div>
+                <span>Answered: <strong id="legend-count-answered">0</strong></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-indicator" style="background:#fca5a5;"></div>
+                <span>Unanswered: <strong id="legend-count-unanswered">0</strong></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-indicator" style="background:var(--warning);"></div>
+                <span>Review: <strong id="legend-count-flagged">0</strong></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-indicator" style="background:#e2e8f0;"></div>
+                <span>Not Visited: <strong id="legend-count-notvisited">0</strong></span>
+              </div>
+            </div>
+
+            <!-- Number Palette Grid (1..10) -->
+            <div class="palette-grid" id="question-palette-grid">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <div class="border-top pt-3 mt-3">
+              <button type="button" class="btn btn-danger btn-block" onclick="document.getElementById('btn-open-submit-modal').click();">
+                <i class="fa-solid fa-check-double"></i> Finish & Submit Test
+              </button>
+              <small class="text-muted d-block text-center mt-2">Auto-evaluation will generate your detailed scorecard.</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Submit Confirmation Modal Overlay -->
+  <div class="modal-overlay" id="submit-modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h4 class="modal-title text-navy">
+          <i class="fa-solid fa-circle-question text-primary"></i> Confirm Test Submission
+        </h4>
+        <button class="modal-close-btn" id="btn-close-submit-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="text-muted mb-3">
+          Are you sure you want to complete and submit your placement mock test? Once submitted, your answers will be evaluated and recorded in LocalStorage.
+        </p>
+
+        <div class="result-breakdown-grid mb-3" style="grid-template-columns: repeat(2, 1fr); gap: 0.75rem;">
+          <div class="result-metric-box p-2">
+            <h4 id="modal-total-q" class="text-navy">10</h4>
+            <span>Total Questions</span>
+          </div>
+          <div class="result-metric-box p-2">
+            <h4 id="modal-answered-q" class="text-success">0</h4>
+            <span>Answered</span>
+          </div>
+          <div class="result-metric-box p-2">
+            <h4 id="modal-unanswered-q" class="text-danger">0</h4>
+            <span>Unanswered / Skipped</span>
+          </div>
+          <div class="result-metric-box p-2">
+            <h4 id="modal-flagged-q" class="text-warning">0</h4>
+            <span>Marked for Review</span>
+          </div>
+        </div>
+
+        <div class="alert alert-info p-3 rounded" style="background:#f0f9ff;border:1px solid #bae6fd;font-size:0.85rem;color:#0369a1;">
+          <i class="fa-solid fa-circle-info"></i> Your timer will stop immediately upon confirming submission.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" id="btn-cancel-submit">Keep Practising</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-submit">
+          <i class="fa-solid fa-check"></i> Submit Examination
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/mock-test.js"></script>
+  <script>
+    // Responsive Sidebar Toggle
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    const sidebar = document.getElementById('app-sidebar');
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    }
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+    }
+  </script>
+</body>
+</html>

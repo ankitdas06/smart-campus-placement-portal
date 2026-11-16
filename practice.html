@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Arena | Smart Campus Placement Preparation Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SmartCampus</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-category-title">Main Portal</div>
+        <div class="menu-item">
+          <a href="dashboard.html" class="menu-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html" class="menu-link active">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Practice Arena</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="mock-test.html" class="menu-link">
+            <i class="fa-solid fa-stopwatch-20"></i>
+            <span>Mock Test Engine</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="result.html" class="menu-link">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+            <span>Results & Analytics</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">Preparation Resources</div>
+        <div class="menu-item">
+          <a href="interview.html" class="menu-link">
+            <i class="fa-solid fa-comments"></i>
+            <span>Interview Prep Hub</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html?cat=programming" class="menu-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Technical Coding</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">System</div>
+        <div class="menu-item">
+          <a href="admin.html" class="menu-link">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Admin Portal</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="index.html" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Public Home</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- User Info Footer -->
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar session-user-avatar">ST</div>
+          <div class="user-info">
+            <div class="user-name session-user-name">Student Account</div>
+            <div class="user-role session-user-role">BCA Placement Candidate</div>
+          </div>
+          <button class="btn-logout btn-logout-trigger" title="Log Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content App Canvas -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-page-title">
+            <h2>Interactive Practice Arena</h2>
+            <p>Solve aptitude, reasoning, verbal, and coding questions with instant step-by-step solutions.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="mock-test.html" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-stopwatch"></i> Take Timed Mock Test
+          </a>
+        </div>
+      </header>
+
+      <!-- Practice Arena Content -->
+      <div class="app-content">
+
+        <!-- Practice Session Metrics Header -->
+        <div class="card p-3 mb-4" style="background:#ffffff;">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="stat-icon purple" style="width:42px;height:42px;font-size:1.1rem;">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-navy" style="font-size:0.95rem;">Live Practice Session Stats</div>
+                <small class="text-muted">Instant evaluation active</small>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+              <div>
+                <small class="text-muted d-block">Attempted</small>
+                <strong class="text-navy" id="stat-practice-attempted" style="font-size:1.15rem;">0</strong>
+              </div>
+              <div>
+                <small class="text-muted d-block">Correct</small>
+                <strong class="text-success" id="stat-practice-correct" style="font-size:1.15rem;">0</strong>
+              </div>
+              <div>
+                <small class="text-muted d-block">Accuracy Rate</small>
+                <strong class="text-primary" id="stat-practice-accuracy" style="font-size:1.15rem;">0%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Switching Tabs -->
+        <div class="practice-filter-bar mb-3">
+          <button type="button" class="filter-pill category-filter-btn active" data-category="all">
+            <i class="fa-solid fa-layer-group"></i> All Modules
+          </button>
+          <button type="button" class="filter-pill category-filter-btn" data-category="aptitude">
+            <i class="fa-solid fa-calculator"></i> Quantitative Aptitude
+          </button>
+          <button type="button" class="filter-pill category-filter-btn" data-category="reasoning">
+            <i class="fa-solid fa-brain"></i> Logical Reasoning
+          </button>
+          <button type="button" class="filter-pill category-filter-btn" data-category="verbal">
+            <i class="fa-solid fa-spell-check"></i> Verbal Ability
+          </button>
+          <button type="button" class="filter-pill category-filter-btn" data-category="programming">
+            <i class="fa-solid fa-code"></i> Programming & Logic
+          </button>
+        </div>
+
+        <!-- Sub-Topic Filter Bar & Search Input -->
+        <div class="d-flex align-items-center justify-content-between gap-3 mb-4 flex-wrap">
+          <div class="d-flex align-items-center gap-2 flex-wrap" id="topic-pills-container">
+            <!-- Dynamically populated topic filter pills -->
+          </div>
+
+          <div style="min-width: 260px;">
+            <div class="input-with-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="practice-search-input" class="form-control" placeholder="Search questions or topics..." style="padding-top:0.5rem;padding-bottom:0.5rem;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Available count badge -->
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <span class="badge badge-purple" id="practice-count-badge">Loading questions...</span>
+          <small class="text-muted"><i class="fa-regular fa-hand-pointer"></i> Click any option to test yourself</small>
+        </div>
+
+        <!-- Empty state -->
+        <div id="practice-empty-state" class="card text-center p-5" style="display:none;">
+          <i class="fa-solid fa-magnifying-glass text-muted mb-3" style="font-size:2.5rem;"></i>
+          <h4 class="fw-bold text-navy">No Questions Found</h4>
+          <p class="text-muted">No questions matched your filter query. Try selecting "All Modules" or resetting search.</p>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="practice-questions-list">
+          <!-- Rendered dynamically by js/practice.js -->
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/practice.js"></script>
+  <script>
+    // Responsive Sidebar Toggle
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    const sidebar = document.getElementById('app-sidebar');
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    }
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+    }
+  </script>
+</body>
+</html>

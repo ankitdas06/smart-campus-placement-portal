@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin & Placement Cell Dashboard | Smart Campus Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SmartCampus</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-category-title">Administration</div>
+        <div class="menu-item">
+          <a href="admin.html" class="menu-link active">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Admin Overview</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#section-questions" class="menu-link">
+            <i class="fa-solid fa-database"></i>
+            <span>Question Bank CRUD</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="#section-test-audit" class="menu-link">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Test Audit Logs</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">Student Portal Links</div>
+        <div class="menu-item">
+          <a href="dashboard.html" class="menu-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Student Dashboard</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html" class="menu-link">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Practice Arena</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="mock-test.html" class="menu-link">
+            <i class="fa-solid fa-stopwatch-20"></i>
+            <span>Mock Test Simulator</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="index.html" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Public Home</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" style="background:linear-gradient(135deg, #f59e0b, #d97706);">AD</div>
+          <div class="user-info">
+            <div class="user-name session-user-name">Administrator</div>
+            <div class="user-role session-user-role">Placement Cell Head</div>
+          </div>
+          <button class="btn-logout btn-logout-trigger" title="Log Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-page-title">
+            <div class="d-flex align-items-center gap-2">
+              <h2>Placement Cell Administration Console</h2>
+              <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i> Demonstration Mode</span>
+            </div>
+            <p>Manage candidate rosters, author placement question banks, and audit assessment scores.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button type="button" class="btn btn-primary btn-sm" id="btn-open-add-q-modal">
+            <i class="fa-solid fa-plus"></i> Add New Question
+          </button>
+          <button type="button" class="btn btn-light btn-sm btn-logout-trigger" title="Logout">
+            <i class="fa-solid fa-power-off text-danger"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Admin Viewport Content -->
+      <div class="app-content">
+
+        <!-- Academic Role Security Notice -->
+        <div class="alert p-3 mb-4 rounded" style="background:#eff6ff;border:1px solid #bfdbfe;font-size:0.875rem;color:#1e40af;">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+              <i class="fa-solid fa-shield-check"></i>
+              <strong>Role Security Guard:</strong> This administrative control panel is restricted to Placement Officers. Demo Admin credentials: <code>admin@smartcampus.edu</code> / <code>admin123</code>.
+            </div>
+            <button class="btn btn-sm btn-outline-primary" onclick="DB.setCurrentUser({id:'usr-admin', name:'Placement Administrator', email:'admin@smartcampus.edu', role:'admin'}); location.reload();">
+              <i class="fa-solid fa-user-shield"></i> Ensure Admin Session
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Global Campus Metrics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon purple">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="admin-stat-students">0</h4>
+              <span>Registered Students</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon navy">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="admin-stat-tests">0</h4>
+              <span>Tests Completed</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon emerald">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="admin-stat-questions">0</h4>
+              <span>Questions in Bank</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon amber">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="stat-details">
+              <h4 id="admin-stat-avg-score">0%</h4>
+              <span>Average Campus Score</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1: Registered Students Table -->
+        <div class="card mb-4" id="section-students">
+          <div class="card-header">
+            <div>
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;">
+                <i class="fa-solid fa-user-graduate text-primary"></i> Registered Student Candidates
+              </h4>
+              <small class="text-muted">Student profiles saved in HTML5 LocalStorage.</small>
+            </div>
+          </div>
+
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Student Name & Email</th>
+                    <th>College / Department</th>
+                    <th>Registered Date</th>
+                    <th>Tests Taken</th>
+                    <th>Audit Tests</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-students-tbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Question Bank Manager (CRUD) -->
+        <div class="card mb-4" id="section-questions">
+          <div class="card-header">
+            <div>
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;">
+                <i class="fa-solid fa-database text-primary"></i> Question Bank Repository (CRUD Manager)
+              </h4>
+              <small class="text-muted">Create, inspect, modify, or remove questions dynamically.</small>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <select id="admin-q-cat-filter" class="form-select form-select-sm" style="width: auto;">
+                <option value="all">All Categories</option>
+                <option value="aptitude">Quantitative Aptitude</option>
+                <option value="reasoning">Logical Reasoning</option>
+                <option value="verbal">Verbal Ability</option>
+                <option value="programming">Programming & Logic</option>
+              </select>
+              <button type="button" class="btn btn-sm btn-outline-danger" id="btn-reset-default-questions" title="Restores seed questions">
+                <i class="fa-solid fa-rotate-left"></i> Reset Default Bank
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Category</th>
+                    <th>Topic</th>
+                    <th>Question Statement</th>
+                    <th>Correct</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-questions-tbody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Campus Placement Test Records Log -->
+        <div class="card mb-4" id="section-test-audit">
+          <div class="card-header">
+            <div>
+              <h4 class="fw-bold text-navy" style="font-size:1.05rem;" id="audit-table-title">
+                <i class="fa-solid fa-clipboard-list text-primary"></i> All Student Test Results Log
+              </h4>
+              <small class="text-muted">Timestamped log of every test completed across the institution.</small>
+            </div>
+          </div>
+
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Candidate</th>
+                    <th>Assessment Title</th>
+                    <th>Score (%)</th>
+                    <th>Correct / Wrong</th>
+                    <th>Attempt Date</th>
+                    <th>Inspect</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-audit-tbody">
+                  <!-- Dynamically rendered -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Add / Edit Question Modal Overlay -->
+  <div class="modal-overlay" id="question-modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h4 class="modal-title text-navy" id="modal-q-title">Add Placement Question</h4>
+        <button class="modal-close-btn" id="btn-close-q-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="form-question-crud">
+        <div class="modal-body">
+          
+          <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="mq-category">Category <span class="required">*</span></label>
+              <select id="mq-category" class="form-select" required>
+                <option value="aptitude">Quantitative Aptitude</option>
+                <option value="reasoning">Logical Reasoning</option>
+                <option value="verbal">Verbal Ability</option>
+                <option value="programming">Programming Practice</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mq-topic">Sub-Topic <span class="required">*</span></label>
+              <input type="text" id="mq-topic" class="form-control" placeholder="e.g. Percentage, Number series, Java OOPs" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mq-question">Question Statement <span class="required">*</span></label>
+            <textarea id="mq-question" class="form-control" rows="3" placeholder="Enter question statement or problem description..." required></textarea>
+          </div>
+
+          <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="mq-opt-a">Option A <span class="required">*</span></label>
+              <input type="text" id="mq-opt-a" class="form-control" placeholder="Option A text" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="mq-opt-b">Option B <span class="required">*</span></label>
+              <input type="text" id="mq-opt-b" class="form-control" placeholder="Option B text" required>
+            </div>
+          </div>
+
+          <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="mq-opt-c">Option C <span class="required">*</span></label>
+              <input type="text" id="mq-opt-c" class="form-control" placeholder="Option C text" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="mq-opt-d">Option D <span class="required">*</span></label>
+              <input type="text" id="mq-opt-d" class="form-control" placeholder="Option D text" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mq-correct">Correct Option <span class="required">*</span></label>
+            <select id="mq-correct" class="form-select" required>
+              <option value="0">Option A</option>
+              <option value="1">Option B</option>
+              <option value="2">Option C</option>
+              <option value="3">Option D</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-0">
+            <label class="form-label" for="mq-explanation">Step-by-Step Solution & Explanation <span class="required">*</span></label>
+            <textarea id="mq-explanation" class="form-control" rows="3" placeholder="Explain the calculation formula or conceptual logic..." required></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" id="btn-cancel-q-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-question">
+            <i class="fa-solid fa-floppy-disk"></i> Save Question
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    // Responsive Sidebar Toggle
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    const sidebar = document.getElementById('app-sidebar');
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    }
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+    }
+  </script>
+</body>
+</html>

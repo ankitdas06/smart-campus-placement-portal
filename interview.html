@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Preparation Hub | Smart Campus Placement Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>SmartCampus</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-category-title">Main Portal</div>
+        <div class="menu-item">
+          <a href="dashboard.html" class="menu-link">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html" class="menu-link">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Practice Arena</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="mock-test.html" class="menu-link">
+            <i class="fa-solid fa-stopwatch-20"></i>
+            <span>Mock Test Engine</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="result.html" class="menu-link">
+            <i class="fa-solid fa-square-poll-vertical"></i>
+            <span>Results & Analytics</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">Preparation Resources</div>
+        <div class="menu-item">
+          <a href="interview.html" class="menu-link active">
+            <i class="fa-solid fa-comments"></i>
+            <span>Interview Prep Hub</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="practice.html?cat=programming" class="menu-link">
+            <i class="fa-solid fa-code"></i>
+            <span>Technical Coding</span>
+          </a>
+        </div>
+
+        <div class="menu-category-title">System</div>
+        <div class="menu-item">
+          <a href="admin.html" class="menu-link">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Admin Portal</span>
+          </a>
+        </div>
+        <div class="menu-item">
+          <a href="index.html" class="menu-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Public Home</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar session-user-avatar">ST</div>
+          <div class="user-info">
+            <div class="user-name session-user-name">Student Account</div>
+            <div class="user-role session-user-role">BCA Placement Candidate</div>
+          </div>
+          <button class="btn-logout btn-logout-trigger" title="Log Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content App Canvas -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar-page-title">
+            <h2>Campus Interview Preparation Hub</h2>
+            <p>Master HR Questions, Technical Interviews, STAR Project Delivery & GD Topics</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="practice.html?cat=programming" class="btn btn-outline-primary btn-sm">
+            <i class="fa-solid fa-code"></i> Technical Coding Practice
+          </a>
+        </div>
+      </header>
+
+      <!-- Interview Hub Content -->
+      <div class="app-content">
+
+        <!-- Navigation Tabs -->
+        <div class="interview-nav-tabs">
+          <button type="button" class="interview-tab-btn active" data-target="tab-hr">
+            <i class="fa-solid fa-user-tie"></i> HR Interview Round
+          </button>
+          <button type="button" class="interview-tab-btn" data-target="tab-technical">
+            <i class="fa-solid fa-laptop-code"></i> Technical Interview
+          </button>
+          <button type="button" class="interview-tab-btn" data-target="tab-star">
+            <i class="fa-solid fa-star"></i> STAR Project Framework
+          </button>
+          <button type="button" class="interview-tab-btn" data-target="tab-gd">
+            <i class="fa-solid fa-users"></i> Group Discussion (GD) Topics
+          </button>
+          <button type="button" class="interview-tab-btn" data-target="tab-tips">
+            <i class="fa-solid fa-clipboard-check"></i> Placement Checklist
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-4" style="max-width: 480px;">
+          <div class="input-with-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="interview-search-input" class="form-control" placeholder="Search interview topics or questions...">
+          </div>
+        </div>
+
+        <!-- ================= TAB 1: HR ROUND ================= -->
+        <div class="interview-pane" id="tab-hr" style="display: block;">
+          
+          <!-- Q1: Tell me about yourself -->
+          <div class="accordion-item open">
+            <div class="accordion-header">
+              <h4>1. "Tell me about yourself." (The 90-Second Winning Elevator Pitch)</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <div class="badge badge-purple mb-2">Ideal Response Formula: Present &rarr; Past &rarr; Future</div>
+              <p><strong>Recommended Answer Structure for BCA Students:</strong></p>
+              <blockquote class="p-3 my-2 rounded" style="background:#ffffff;border-left:4px solid var(--primary-purple);font-style:italic;">
+                "Good morning/afternoon, Sir/Ma'am. Thank you for this opportunity. My name is [Your Name], and I am currently in the final year of my Bachelor of Computer Applications at [College Name]. During my academic journey, I discovered a strong passion for web development and software engineering. I have hands-on experience with HTML5, CSS3, JavaScript, Java, and relational databases. For my final-year project, I built a 'Smart Campus Placement Preparation Portal', which includes real-time mock evaluation and LocalStorage state management. Beyond academics, I enjoy algorithmic problem solving and active participation in coding hackathons. I am eager to begin my career as an Associate Software Engineer at [Company Name], where I can contribute my programming abilities while learning from industry veterans."
+              </blockquote>
+              <p class="text-muted mt-2 mb-0"><strong>Key Tip:</strong> Keep it strictly under 90 seconds. Focus 70% on technical skills, projects, and career enthusiasm rather than reciting your entire family background.</p>
+            </div>
+          </div>
+
+          <!-- Q2: Strengths & Weaknesses -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>2. "What are your greatest strengths and genuine weaknesses?"</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p><strong>Strength Example:</strong> "My greatest strength is structured problem solving and rapid adaptability. When learning JavaScript asynchronous patterns, I built small sandbox projects to thoroughly understand closures and promises before implementing them in my main project."</p>
+              <p><strong>Weakness Example:</strong> "Earlier, I used to hesitate asking for clarification when given ambiguous requirements, which sometimes led to rework. Now, I make it a practice to summarize task expectations in a quick checklist and confirm with mentors upfront before coding."</p>
+            </div>
+          </div>
+
+          <!-- Q3: Why should we hire you? -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>3. "Why should we hire you over other qualified candidates?"</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p>Focus on your core computer science fundamentals, passion for continuous learning, and practical project track record.</p>
+              <p class="mb-0"><em>"While many candidates share a similar syllabus, I bring demonstrated end-to-end project building experience from conceptualizing user flows to debugging responsive frontends and evaluating performance. I have a strong foundation in OOP and clean code principles, and I am highly coachable with a strong drive to deliver reliable software."</em></p>
+            </div>
+          </div>
+
+          <!-- Q4: Where do you see yourself in 5 years? -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>4. "Where do you see yourself in five years?"</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p class="mb-0"><em>"In 5 years, I envision myself as a seasoned Senior Software Engineer or Technical Lead within the organization. In the first two years, my focus will be mastering production systems, clean code architectures, and cloud services. Over time, I aspire to take ownership of module design, mentor newer graduates, and contribute directly to high-impact technical deliveries."</em></p>
+            </div>
+          </div>
+
+          <!-- Q5: Handling stress and tight deadlines -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>5. "How do you handle high pressure or tight project deadlines?"</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p class="mb-0"><em>"I handle pressure by breaking complex tasks down into prioritized milestones. During our semester project submission, we faced a major responsive design bug two days before the demo. Rather than panicking, I systematically isolated CSS flexbox conflicts using Chrome DevTools and established a focused testing checklist to complete the delivery on schedule."</em></p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= TAB 2: TECHNICAL ROUND ================= -->
+        <div class="interview-pane" id="tab-technical" style="display: none;">
+          
+          <!-- Java OOPs -->
+          <div class="accordion-item open">
+            <div class="accordion-header">
+              <h4>Java: What are the Four Pillars of Object-Oriented Programming (OOP)?</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <ul>
+                <li class="mb-2"><strong>1. Encapsulation:</strong> Binding data (variables) and code (methods) together into a single unit (class) and protecting internal state using private access modifiers with public getters/setters.</li>
+                <li class="mb-2"><strong>2. Abstraction:</strong> Hiding internal implementation complexities and showing only essential features to the user using Abstract Classes and Interfaces.</li>
+                <li class="mb-2"><strong>3. Inheritance:</strong> Mechanism where a child class acquires properties and behaviors of a parent class (using <code>extends</code>), promoting code reusability.</li>
+                <li class="mb-0"><strong>4. Polymorphism:</strong> Ability of an entity to take many forms. Categorized into Compile-Time (Method Overloading) and Runtime (Method Overriding with dynamic method dispatch).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Java Strings & Memory -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>Java: Difference between String, StringBuilder, and StringBuffer</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <table class="table table-bordered" style="font-size:0.875rem;">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>String</th>
+                    <th>StringBuilder</th>
+                    <th>StringBuffer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Immutability</strong></td>
+                    <td>Immutable (Stored in String Pool)</td>
+                    <td>Mutable</td>
+                    <td>Mutable</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thread Safety</strong></td>
+                    <td>Inherently Thread Safe</td>
+                    <td>Not Thread Safe (Fastest)</td>
+                    <td>Thread Safe (Synchronized methods)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>Slow for repetitive concatenation</td>
+                    <td>High performance (single-thread)</td>
+                    <td>Moderate (overhead of locks)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- C Pointers & Memory -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>C Programming: What is a Pointer? Explain dangling pointer & memory leaks.</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p>A <strong>pointer</strong> is a variable that stores the memory address of another variable.</p>
+              <ul>
+                <li class="mb-1"><strong>Dangling Pointer:</strong> Occurs when a pointer continues pointing to a memory location that has already been deallocated using <code>free(ptr)</code>. Fix: Set <code>ptr = NULL;</code> immediately after freeing.</li>
+                <li class="mb-1"><strong>Memory Leak:</strong> Occurs when dynamic memory is allocated on the heap (using <code>malloc()</code> or <code>calloc()</code>) but never deallocated before the pointer reference is lost.</li>
+                <li class="mb-0"><strong>Wild Pointer:</strong> An uninitialized pointer that holds an arbitrary garbage address.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Web & JavaScript -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>Web Tech: How does HTML5 LocalStorage differ from Cookies and SessionStorage?</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <ul>
+                <li class="mb-2"><strong>LocalStorage:</strong> Stores 5MB - 10MB of key-value data on the client side with no expiration date. Data persists across browser restarts and tabs. Never sent automatically over HTTP requests.</li>
+                <li class="mb-2"><strong>SessionStorage:</strong> Identical API to LocalStorage, but data is purged as soon as the specific browser tab or window is closed.</li>
+                <li class="mb-0"><strong>Cookies:</strong> Stores small strings (typically ~4KB), sent with every HTTP request to the server, ideal for session tokens with configurable expiration timestamps.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- DBMS Normalization -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4>DBMS: What is Normalization? Explain 1NF, 2NF, 3NF, and BCNF.</h4>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-body">
+              <p><strong>Normalization</strong> is the systematic process of organizing database relations to reduce data redundancy and eliminate update, insertion, and deletion anomalies.</p>
+              <ul>
+                <li><strong>1NF:</strong> All column values must be atomic (no repeating groups or multi-valued attributes).</li>
+                <li><strong>2NF:</strong> Must be in 1NF and have NO partial dependencies (all non-key attributes fully functionally dependent on the primary key).</li>
+                <li><strong>3NF:</strong> Must be in 2NF and have NO transitive dependencies (non-key attributes must not depend on other non-key attributes).</li>
+                <li><strong>BCNF (Boyce-Codd NF):</strong> Stricter version of 3NF where for every functional dependency X &rarr; Y, X must be a super key.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= TAB 3: STAR METHOD PROJECT EXPLANATION ================= -->
+        <div class="interview-pane" id="tab-star" style="display: none;">
+          
+          <div class="card p-4 mb-4">
+            <h4 class="fw-bold text-navy mb-2"><i class="fa-solid fa-star text-warning"></i> The STAR Project Explanation Framework</h4>
+            <p class="text-muted" style="font-size:0.925rem;">
+              Campus interviewers always ask: <em>"Explain your final year project."</em> Never explain it as just a list of HTML tags! Use the industry-standard <strong>STAR (Situation, Task, Action, Result)</strong> methodology:
+            </p>
+
+            <div class="star-framework-grid">
+              <div class="star-card">
+                <span class="star-letter">S</span>
+                <h5 class="fw-bold text-navy">Situation</h5>
+                <p class="text-muted" style="font-size:0.85rem;">What was the problem or challenge faced by college students preparing for campus hiring?</p>
+              </div>
+
+              <div class="star-card">
+                <span class="star-letter">T</span>
+                <h5 class="fw-bold text-navy">Task</h5>
+                <p class="text-muted" style="font-size:0.85rem;">What specific software solution did you set out to build as your BCA Summer Project?</p>
+              </div>
+
+              <div class="star-card">
+                <span class="star-letter">A</span>
+                <h5 class="fw-bold text-navy">Action</h5>
+                <p class="text-muted" style="font-size:0.85rem;">What technical steps did you take? (HTML5, CSS3, DOM manipulation, LocalStorage, Timer engines).</p>
+              </div>
+
+              <div class="star-card">
+                <span class="star-letter">R</span>
+                <h5 class="fw-bold text-navy">Result</h5>
+                <p class="text-muted" style="font-size:0.85rem;">What was the outcome? Accuracy metrics, zero-dependency deployment, and usability feedback.</p>
+              </div>
+            </div>
+
+            <!-- Concrete Sample Script -->
+            <div class="p-3 rounded" style="background:#f8fafc; border:1.5px solid var(--border-color);">
+              <h5 class="fw-bold text-navy mb-2"><i class="fa-solid fa-microphone text-primary"></i> Exact Script You Can Speak in the Interview:</h5>
+              <p style="font-size:0.9rem; line-height:1.7;" class="text-navy">
+                <strong>[Situation]:</strong> "In our college, many computer applications students struggle with competitive placement exams because resources for quantitative aptitude, logical reasoning, and technical coding are fragmented across multiple websites without real-time test timing."<br><br>
+                <strong>[Task]:</strong> "To address this, my final-year project goal was to build the <em>Smart Campus Placement Preparation Portal</em>—a unified web application providing modular practice, timed mock simulations with automatic grading, and comprehensive interview roadmaps."<br><br>
+                <strong>[Action]:</strong> "I designed a responsive UI using semantic HTML5 and modern CSS3 with a navy and purple aesthetic. In JavaScript, I developed an exam engine featuring a 10-minute countdown timer with auto-submit, a color-coded question palette tracking answered/flagged questions, and a centralized LocalStorage repository that manages student credentials and question banks without relying on expensive backend hosting."<br><br>
+                <strong>[Result]:</strong> "The portal calculates candidate accuracy rates, subject-wise proficiency bars, and step-by-step mathematical explanations. During pilot testing with 25 classmates, users completed over 60 mock assessments with zero client-side crashes and noted significant confidence improvement in time management."
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= TAB 4: GROUP DISCUSSION (GD) ================= -->
+        <div class="interview-pane" id="tab-gd" style="display: none;">
+          
+          <!-- GD Topic 1 -->
+          <div class="card p-4 mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h4 class="fw-bold text-navy">1. Artificial Intelligence: Threat to IT Jobs or Creator of Opportunities?</h4>
+              <span class="badge badge-purple">High Frequency</span>
+            </div>
+            <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
+              <div class="p-3 rounded" style="background:#ecfdf5;border:1px solid #a7f3d0;">
+                <strong class="text-success d-block mb-1"><i class="fa-solid fa-thumbs-up"></i> In Favor (Creator of Jobs):</strong>
+                <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;">
+                  <li>Automates repetitive boilerplate coding, freeing developers to focus on higher-level architectural design.</li>
+                  <li>Generates brand new high-demand domains: Prompt Engineering, AI Governance, Data Engineering, and MLOps.</li>
+                  <li>Historical precedent: The advent of personal computers and the internet created vastly more industries than they displaced.</li>
+                </ul>
+              </div>
+              <div class="p-3 rounded" style="background:#fef2f2;border:1px solid #fecaca;">
+                <strong class="text-danger d-block mb-1"><i class="fa-solid fa-thumbs-down"></i> Counter Points (Threats/Risks):</strong>
+                <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;">
+                  <li>Entry-level manual QA and repetitive coding roles are experiencing reduced hiring demand.</li>
+                  <li>Creates severe digital divides for candidates who lack prompt access to modern computing tools.</li>
+                  <li>Ethical and privacy concerns regarding proprietary data consumption by LLM platforms.</li>
+                </ul>
+              </div>
+            </div>
+            <small class="text-muted d-block mt-2"><strong>Balanced Conclusion:</strong> AI will not replace developers; but developers who leverage AI will replace those who do not.</small>
+          </div>
+
+          <!-- GD Topic 2 -->
+          <div class="card p-4 mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h4 class="fw-bold text-navy">2. Work from Home (Remote) vs. Return to Office</h4>
+              <span class="badge badge-navy">Corporate Culture</span>
+            </div>
+            <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
+              <div class="p-3 rounded" style="background:#ecfdf5;border:1px solid #a7f3d0;">
+                <strong class="text-success d-block mb-1"><i class="fa-solid fa-house-laptop"></i> Remote Work Merits:</strong>
+                <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;">
+                  <li>Eliminates grueling 2-hour daily commutes, reducing stress and urban carbon footprint.</li>
+                  <li>Democratizes opportunities for talent residing in tier-2 and tier-3 towns.</li>
+                  <li>Enables continuous focus and flexible time management for developers.</li>
+                </ul>
+              </div>
+              <div class="p-3 rounded" style="background:#fef2f2;border:1px solid #fecaca;">
+                <strong class="text-danger d-block mb-1"><i class="fa-solid fa-building"></i> Office Work Merits:</strong>
+                <ul style="font-size:0.875rem;padding-left:1.2rem;line-height:1.6;">
+                  <li>Unmatched spontaneous brainstorming, team bonding, and peer learning for fresh college graduates.</li>
+                  <li>Clear boundary separation between professional commitments and family life.</li>
+                  <li>Streamlined compliance with sensitive data protection and enterprise network policies.</li>
+                </ul>
+              </div>
+            </div>
+            <small class="text-muted d-block mt-2"><strong>Balanced Conclusion:</strong> A structured <em>Hybrid model</em> (2-3 days in office for collaboration and remaining days remote) offers optimal productivity.</small>
+          </div>
+
+        </div>
+
+        <!-- ================= TAB 5: PLACEMENT DAY CHECKLIST ================= -->
+        <div class="interview-pane" id="tab-tips" style="display: none;">
+          
+          <div class="card p-4 mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-navy mb-1"><i class="fa-solid fa-clipboard-check text-success"></i> Placement Day Readiness Checklist</h4>
+                <p class="text-muted mb-0" style="font-size:0.9rem;">Mark items as you complete them. Your selections are automatically saved in LocalStorage.</p>
+              </div>
+              <span class="badge badge-success" id="checklist-completed-count" style="font-size:0.85rem;">0 / 8 Tasks Ready</span>
+            </div>
+
+            <div class="list-group">
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">1. Hard Copies of Updated Resume</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Keep at least 3 clean printouts on crisp bond paper. Verify links to GitHub repository.</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">2. College Identity Card & Government ID</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Mandatory for security gate pass and recruitment biometric verification.</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">3. Formal Placement Dress Code</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Ironed formal shirt, trousers, polished black/brown leather shoes, and formal blazer (if college prescribed).</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">4. 90-Second "Tell Me About Yourself" Rehearsed</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Practiced in front of a mirror or peer with steady eye contact and natural smile.</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">5. BCA Final Year Project Deep-Dive Prepared</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Prepared to explain architecture, DFD, LocalStorage data structure, and technical hurdles using STAR method.</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">6. Core CS Fundamentals Quick Revision</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Reviewed OOPs principles, Java memory model, C pointers, and basic SQL queries (joins & group by).</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">7. Research the Recruiting Company</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Know company founder/CEO, core business vertical, recent news, and why you wish to join them.</div>
+                </div>
+              </label>
+
+              <label class="d-flex align-items-center gap-3 p-3 border rounded mb-2" style="cursor:pointer;background:#ffffff;">
+                <input type="checkbox" class="interview-chk" style="width:20px;height:20px;">
+                <div>
+                  <strong class="text-navy">8. Thoughtful Reverse Questions for the Interviewer</strong>
+                  <div class="text-muted" style="font-size:0.8rem;">Prepare 2 questions: e.g. "What tech stack does your team primarily use for incoming freshers?"</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/interview.js"></script>
+  <script>
+    // Responsive Sidebar Toggle
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const closeBtn = document.getElementById('sidebar-close-btn');
+    const sidebar = document.getElementById('app-sidebar');
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    }
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+    }
+  </script>
+</body>
+</html>
